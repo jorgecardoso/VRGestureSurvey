@@ -10,7 +10,8 @@ X <- X[1:102,]
 
 plotYearDistribution <- function() {
   p <- ggplot(X, aes(Year)) + 
-    geom_bar() 
+    geom_bar() +
+    theme(text = element_text(size=20))
   print(p)
 }
 
@@ -22,7 +23,8 @@ bodyPartDistribution <- function() {
   r<-sub(" $", "", r)
   d<-data.frame(Tracked.body.part=r)
   p <- ggplot(d, aes(Tracked.body.part)) + 
-    geom_bar()  +coord_flip()
+    geom_bar()  +coord_flip() +
+    theme(text = element_text(size=20))
   print(p)
 }
 
@@ -34,7 +36,8 @@ deviceDistribution <- function() {
   r<-sub(" $", "", r)
   d<-data.frame(device=r)
   p <- ggplot(d, aes(device)) + 
-    geom_bar() +coord_flip()
+    geom_bar() +coord_flip() +
+    theme(text = element_text(size=20))
   print(p)
 }
 
