@@ -1,0 +1,65 @@
+tbody td div {
+  max-height: 75px;
+  height: 75px;
+  overflow: hidden;
+}
+
+tbody td div:hover {
+  position:absolute;
+  transform: translate(0, -50%);
+  height:100px;
+  background:white;
+  border: 1px solid black;
+}
+#unslider {
+  background-color:white;
+  position:fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+}
+
+
+.thumb img{
+  width: 50px;
+  height: 50px;
+}
+
+.unslider img{
+  position:relative;
+  
+  margin-right:100px;
+  left:50%;
+  transform: translate(-50%);
+}
+.unslider-arrow {
+		display: block;
+		width: 32px;
+		height: 32px;
+
+		top: 50%;
+		right: 50px;
+		left: auto;
+		margin-top: -16px;
+
+		overflow: hidden;
+
+		background: rgba(0,0,0,.2) no-repeat 50% 50%;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAQCAQAAABuQZ3IAAAAi0lEQVR4AU3OISBEQQBAwS0AACS9NxqQgCZpkiYBVddFvWhAAUABAPQCAGC4g/0vTnrBqCfDIZl70J+kMUBPpEwT4FNXxBxz4F1HxHyr4EVTxBLb4EFNxEon4CJSlVNw9AcV9sC16h8osgke1P1ArgXwouVvdQq86ww/GQefusNf7kBviBlxpT8k+gL/Wox4r1d4MwAAAABJRU5ErkJggg==');
+		background-size: 7px 11px;
+
+		border-radius: 32px;
+		text-indent: -999em;
+
+		opacity: .6;
+		transition: opacity .2s;
+	}
+
+
+.unslider-arrow.prev {
+		
+			right: auto;
+			-ms-transform: rotate(-180deg);
+			transform: rotate(-180deg);
+}
