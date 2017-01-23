@@ -29,8 +29,11 @@ shinyUI(fluidPage(title="VR Gesture Survey",theme = "style.css",
             fluidRow( column(plotOutput("deviceDistribution"), width=12)),
             fluidRow( column(width=5), column("Body part distribution", width=2), column(width=5)),
             fluidRow( column(plotOutput("bodyPartDistribution"), width=12))),
+
+    tabPanel("Slides at iGesto", 
+             includeHTML("slidesigesto.html")),
     tabPanel("About", 
-             includeHTML("include.html"))
+             includeHTML("about.html"))
   )
 
   
