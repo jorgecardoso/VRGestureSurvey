@@ -15,6 +15,9 @@ source("plots.R")
 
 shinyServer(function(input, output) {
   
+  output$headEntries <- renderTable({
+    print(allDevices[allDevices$Tracked.body.part.cleaned=="Head", c(1, 2, 3, 4, 5)]);
+  })
   
   output$yearDistribution <- renderPlot({
     

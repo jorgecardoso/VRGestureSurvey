@@ -21,7 +21,9 @@ shinyUI(fluidPage(title="VR Gesture Survey",theme = "style.css",
     tabPanel("Database", 
              fluidRow( column(DT::dataTableOutput('tbl'), width = 12)),
               tags$div(id = "unslider")),
-    
+   # tabPanel("Database-PerBodypart", 
+  #           fluidRow( column(tableOutput("headEntries"), width = 12)),
+  #           tags$div(id = "unslider")),
     tabPanel("Statistics", 
              fluidRow( column(width=5), column("Year distribution", width=2), column(width=5)),
              fluidRow( column(plotOutput("yearDistribution"), width=12)),
@@ -30,8 +32,6 @@ shinyUI(fluidPage(title="VR Gesture Survey",theme = "style.css",
             fluidRow( column(width=5), column("Body part distribution", width=2), column(width=5)),
             fluidRow( column(plotOutput("bodyPartDistribution"), width=12))),
 
-    tabPanel("Slides at iGesto", 
-             includeHTML("slidesigesto.html")),
     tabPanel("About", 
              includeHTML("about.html"))
   )
