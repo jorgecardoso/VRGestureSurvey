@@ -57,3 +57,43 @@ function createThumbs(data, type, row, meta) {
   thumbs += '</span>';
   return thumbs;
 }
+
+var table;
+function initComplete( ) {
+  table = this;
+  this.api().columns(2).every( function (ci) {
+          console.log("Column index: " + ci);
+                var column = this;
+                var select = $('<select style="width:100px"><option value=""></option></select>')
+                  //.appendTo( $(column.header()).empty() )
+                    .appendTo( $("table thead tr:nth-child(2) td:nth-child("+(ci+1)+")").empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column.search(val, true).draw();
+                    } );
+                var searchItems = [];
+                column.data().unique().sort().each( function ( d, j ) {
+                   var items = d.split("+");
+                    //select.append( '<option value="'+d+'">'+d+'</option>' )
+                    items.forEach(function(s) {
+                      
+                      var cleaned = s.replace(/\([\s\S]*\)/i, "").trim();
+                      
+                      if ( !searchItems.includes(cleaned) ) {
+                        searchItems.push(cleaned);  
+                      }
+                    });
+                    
+                } );
+                
+                
+                searchItems.sort().forEach(function(s) {
+                  console.log(s);
+                  select.append( '<option value="'+s+'">'+s+'</option>' )
+                })
+                
+            } );
+}

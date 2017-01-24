@@ -11,9 +11,10 @@ library(htmlwidgets)
 library(DT)
 
 source("plots.R")
+#options(shiny.trace = TRUE)
 
 shinyServer(function(input, output) {
- 
+  
   
   output$yearDistribution <- renderPlot({
     
@@ -31,7 +32,7 @@ shinyServer(function(input, output) {
     
   })
   
-  output$tbl = DT::renderDataTable(
+  output$tbl = DT::renderDataTable(server = FALSE,
         X, filter="top",
         
         options = list(lengthChange = FALSE, 
@@ -52,7 +53,8 @@ shinyServer(function(input, output) {
                                               "}"
                                               )
                                           )
-                                    )
+                                    ),
+                       initComplete = JS("initComplete")
         ),
                       
         escape=FALSE,
