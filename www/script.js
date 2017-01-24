@@ -61,12 +61,17 @@ function createThumbs(data, type, row, meta) {
 var table;
 function initComplete( ) {
   table = this;
-  this.api().columns(2).every( function (ci) {
+  this.api().columns([2, 4]).every( function (ci) {
           console.log("Column index: " + ci);
                 var column = this;
+                
+                //hide existing filter input
+                $("table thead tr:nth-child(2) td:nth-child("+(ci+1)+") div").hide();
+                
+                // add our own
                 var select = $('<select style="width:100px"><option value=""></option></select>')
                   //.appendTo( $(column.header()).empty() )
-                    .appendTo( $("table thead tr:nth-child(2) td:nth-child("+(ci+1)+")").empty() )
+                    .appendTo( $("table thead tr:nth-child(2) td:nth-child("+(ci+1)+")"))
                     .on( 'change', function () {
                         var val = $.fn.dataTable.util.escapeRegex(
                             $(this).val()
@@ -76,16 +81,15 @@ function initComplete( ) {
                     } );
                 var searchItems = [];
                 column.data().unique().sort().each( function ( d, j ) {
-                   var items = d.split("+");
-                    //select.append( '<option value="'+d+'">'+d+'</option>' )
-                    items.forEach(function(s) {
+                  var items = d.split("+");
+                    
+                  items.forEach(function(s) {
                       
-                      var cleaned = s.replace(/\([\s\S]*\)/i, "").trim();
-                      
-                      if ( !searchItems.includes(cleaned) ) {
+                    var cleaned = s.replace(/\([\s\S]*\)/i, "").trim();
+                    if ( !searchItems.includes(cleaned) && cleaned.length > 1) {
                         searchItems.push(cleaned);  
-                      }
-                    });
+                    }
+                  });
                     
                 } );
                 
