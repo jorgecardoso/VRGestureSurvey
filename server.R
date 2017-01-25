@@ -39,7 +39,7 @@ shinyServer(function(input, output) {
         X, filter="top",
         
         options = list(lengthChange = FALSE, 
-                       pageLength = 20,
+                       pageLength = 50,
                        autoWidth=TRUE,
                        columnDefs = list( #list(visible=FALSE, targets=8), 
                                          list(width="10%", targets="_all"),

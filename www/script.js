@@ -77,7 +77,7 @@ function initComplete( ) {
                             $(this).val()
                         );
  
-                        column.search(val, true).draw();
+                        column.search(  val ? val : '', true, false).draw();
                     } );
                 var searchItems = [];
                 column.data().unique().sort().each( function ( d, j ) {

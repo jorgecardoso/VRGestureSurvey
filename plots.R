@@ -48,10 +48,15 @@ bodyPartDistribution <- function() {
   r<-sub(" *\\(.*\\) *", "", r)
   r<-sub("^ ", "", r)
   r<-sub(" $", "", r)
-  d<-data.frame(Tracked.body.part=r)
-  p <- ggplot(d, aes(Tracked.body.part)) + 
-    geom_bar()  +coord_flip() +
-    theme(text = element_text(size=20))
+  
+  
+  t<-sort(table(r))
+  d <- as.data.frame(t)
+  p <- ggplot(d, aes(x=r, y=Freq)) + 
+    geom_bar(stat='identity') +coord_flip() +
+    ylab("Count") +
+    theme(text = element_text(size=20),
+          axis.title.y=element_blank()  ) 
   print(p)
 }
 
@@ -61,11 +66,16 @@ deviceDistribution <- function() {
   r<-sub(" *\\(.*\\) *", "", r)
   r<-sub("^ ", "", r)
   r<-sub(" $", "", r)
-  d<-data.frame(device=r)
-  p <- ggplot(d, aes(device)) + 
-    geom_bar() +coord_flip() +
-    theme(text = element_text(size=20))
+  t<-sort(table(r))
+  d <- as.data.frame(t)
+  p <- ggplot(d, aes(x=r, y=Freq)) + 
+    geom_bar(stat='identity') +coord_flip() +
+    ylab("Count") +
+    theme(text = element_text(size=20),
+          axis.title.y=element_blank()  ) 
   print(p)
+  
+ 
 }
 
 plotYearDistribution()
