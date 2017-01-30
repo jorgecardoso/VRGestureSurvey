@@ -6,7 +6,7 @@ X$DOILink <- paste("<a target='_new' href='https://doi.org/",X$DOI,"'>", X$DOI,"
 X <- X[c(1:9, 37)]
 
 # filter uncatalogued data
-X <- X[1:102,]
+X <- X[1:150,]
 
 
 body.parts<-unlist(lapply(X$Tracked.body.part,  function(s) strsplit(as.character(s), " *([+]) *")))
@@ -38,6 +38,8 @@ for (part in levels(body.parts)) {
 plotYearDistribution <- function() {
   p <- ggplot(X, aes(Year)) + 
     geom_bar() +
+    ggtitle("Distribution of year of publication") +
+    ylab("Count") +
     theme(text = element_text(size=20))
   print(p)
 }
@@ -54,6 +56,7 @@ bodyPartDistribution <- function() {
   d <- as.data.frame(t)
   p <- ggplot(d, aes(x=r, y=Freq)) + 
     geom_bar(stat='identity') +coord_flip() +
+    ggtitle("Distribution of tracked body part") +
     ylab("Count") +
     theme(text = element_text(size=20),
           axis.title.y=element_blank()  ) 
@@ -70,6 +73,7 @@ deviceDistribution <- function() {
   d <- as.data.frame(t)
   p <- ggplot(d, aes(x=r, y=Freq)) + 
     geom_bar(stat='identity') +coord_flip() +
+    ggtitle("Categories of detection technologies")+
     ylab("Count") +
     theme(text = element_text(size=20),
           axis.title.y=element_blank()  ) 
