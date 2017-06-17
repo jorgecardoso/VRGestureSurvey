@@ -1,10 +1,10 @@
 name: VRGestureSurvey
-title:
+title: VRGestureSurvey
 account: jorgecardoso
 server: shinyapps.io
 appId: 151423
-bundleId: 699491
+bundleId: 871320
 url: https://jorgecardoso.shinyapps.io/VRGestureSurvey/
-when: 1486118103.66406
+when: 1497720847.33932
 asMultiple: FALSE
 asStatic: FALSE

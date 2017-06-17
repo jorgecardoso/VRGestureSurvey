@@ -1,4 +1,5 @@
 library(ggplot2) 
+library(stringr)
 
 X <- read.csv(url("https://docs.google.com/spreadsheets/d/1fWJ_yhH1-tly8NavSH_hLSWklUEEn-kcil7sgtiIyV0/pub?output=csv"))
 X$DOILink <- paste("<a target='_new' href='https://doi.org/",X$DOI,"'>", X$DOI,"</a>", sep="")
@@ -6,7 +7,8 @@ X$DOILink <- paste("<a target='_new' href='https://doi.org/",X$DOI,"'>", X$DOI,"
 X <- X[c(1:9, 37)]
 
 # filter uncatalogued data
-X <- X[1:150,]
+#X <- X[1:150,]
+
 
 
 body.parts<-unlist(lapply(X$Tracked.body.part,  function(s) strsplit(as.character(s), " *([+]) *")))
@@ -34,13 +36,14 @@ for (part in levels(body.parts)) {
 }
 
 
-
+X$Year <- factor(X$Year)
 plotYearDistribution <- function() {
   p <- ggplot(X, aes(Year)) + 
     geom_bar() +
     ggtitle("Distribution of year of publication") +
     ylab("Count") +
-    theme(text = element_text(size=20))
+    theme_bw() +
+    theme(text = element_text(size=14))
   print(p)
 }
 
@@ -58,7 +61,8 @@ bodyPartDistribution <- function() {
     geom_bar(stat='identity') +coord_flip() +
     ggtitle("Distribution of tracked body part") +
     ylab("Count") +
-    theme(text = element_text(size=20),
+    theme_bw() +
+    theme(text = element_text(size=14),
           axis.title.y=element_blank()  ) 
   print(p)
 }
@@ -75,7 +79,8 @@ deviceDistribution <- function() {
     geom_bar(stat='identity') +coord_flip() +
     ggtitle("Categories of detection technologies")+
     ylab("Count") +
-    theme(text = element_text(size=20),
+    theme_bw() +
+    theme(text = element_text(size=14),
           axis.title.y=element_blank()  ) 
   print(p)
   

@@ -10,6 +10,7 @@ library(shiny)
 shinyUI(fluidPage(title="VR Gesture Survey",theme = "style.css",
   tags$head(tags$script(src="script.js")),
   tags$head(tags$script(src="js/unslider-min.js")),
+  tags$head(tags$script(src="js/analytics.js")),
   tags$head(
     tags$link(rel = "stylesheet", type = "text/css", href = "css/unslider.css")
   ),
